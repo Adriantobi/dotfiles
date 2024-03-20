@@ -8,24 +8,27 @@ Before proceeding, ensure you have the following prerequisites installed:
 
 - [Neovim](https://neovim.io/): A modern text editor that provides Vim emulation and extensibility. You can install Neovim using Chocolatey on Windows.
 - [LLVM](https://llvm.org/): A compiler infrastructure project. Some Neovim plugins may require LLVM. LLVM can also be installed via Chocolatey on Windows.
+- [ripgrep](https://github.com/BurntSushi/ripgrep): A line-oriented search tool that recursively searches your current directory for a regex pattern while respecting your gitignore rules. It is faster than other search tools like grep, ack, and ag. You can install ripgrep using Chocolatey on Windows.
 
 ## Installation Steps
 
-### 1. Install Neovim and LLVM (optional)
+### 1. Install Neovim LLVM (optional) and ripgrep
 
 #### Using Chocolatey (Windows)
 
-If you're on Windows and have Chocolatey installed, you can use it to install Neovim and LLVM by running the following commands in an elevated PowerShell prompt:
+If you're on Windows and have Chocolatey installed, you can use it to install Neovim, LLVM and ripgrep by running the following commands in an elevated PowerShell prompt:
 
 ```powershell
 choco install neovim
 choco install llvm
+choco install ripgrep
 ```
 Manual Installation (All Platforms)
 Alternatively, you can manually install Neovim and LLVM from their respective websites:
 
 - [Neovim](https://neovim.io/)
 - [LLVM](https://llvm.org/)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
 
 ### 2. Clone Dotfiles
 Clone your dotfiles repository into your home directory:
