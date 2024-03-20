@@ -1,0 +1,14 @@
+{
+  "extensions": {
+    "js": "node",
+    "dart": "dart run",
+    "py": "python",
+    "rs": "cargo run"
+  },
+  "commands": {
+    "next-dev": "npm run dev",
+    "prisma": "npx prisma studio",
+    "rdev": "npm start",
+    "serve": "npx serve"
+  }
+}
