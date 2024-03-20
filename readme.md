@@ -30,14 +30,14 @@ Alternatively, you can manually install Neovim and LLVM from their respective we
 ### 2. Clone Dotfiles
 Clone your dotfiles repository into your home directory:
 
-``` bash
+``` powershell
 git clone https://github.com/Adriantobi/dotfiles ~/.dotfiles
 ```
 
 ### 3. Set up Neovim Configurations
 Copy the Neovim configuration file from your dotfiles repository to the appropriate location. This step assumes your Neovim configuration is stored at `~/.dotfiles/nvim/init.vim`.
 
-``` bash
+``` powershell
 cp ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
 ```
 4. Launch Neovim
