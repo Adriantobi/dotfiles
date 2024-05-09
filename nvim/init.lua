@@ -968,7 +968,10 @@ vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('x', '<leader>p', "\"_dP")
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+vim.keymap.set('n', '<leader><S-p>', ":-tabmove<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<leader><S-n>', ":+tabmove<CR>", { noremap = true, silent = true })
 
+vim.opt.mouse = ""
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
