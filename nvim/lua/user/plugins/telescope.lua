@@ -50,7 +50,7 @@ return {
 
     keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Search [G]it [F]iles' })
     keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-    keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
+    keymap.set('n', '<leader>ht', builtin.help_tags, { desc = '[H]elp [T]ags' })
     keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
     keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
     keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
