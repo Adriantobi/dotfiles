@@ -18,7 +18,16 @@ return {
     local mason_lspconfig = require("mason-lspconfig")
     local mason_tool_installer = require("mason-tool-installer")
 
-    mason.setup({})
+    mason.setup({
+			automatic_installation = true,
+			ui = {
+				icons = {
+					server_installed = "✓",
+					server_pending = "➜",
+					server_uninstalled = "✗",
+				},
+			},
+		})
 
     mason_lspconfig.setup({
       -- list of servers for mason to install
