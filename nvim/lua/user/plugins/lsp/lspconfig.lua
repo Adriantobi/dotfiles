@@ -46,8 +46,8 @@ return {
         opts.desc = "[D]ocument [S]ymbols"
         keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, opts) -- show document symbols
 
-        opts.desc = "[W]orkspace [S]ymbols"
-        keymap.set("n", "<leader>ws", builtin.lsp_dynamic_workspace_symbols, opts) -- show workspace symbols
+        opts.desc = "[D]ynamic [W]orkspace Symbols"
+        keymap.set("n", "<leader>dw", builtin.lsp_dynamic_workspace_symbols, opts) -- show workspace symbols
 
         opts.desc = "See available code actions"
         keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
