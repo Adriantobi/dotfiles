@@ -11,7 +11,7 @@ return {
 			flavour = "mocha",
 			term_colors = true,
 			transparent_background = false,
-			no_italic = false,
+			no_italic = true,
 			no_bold = false,
 			color_overrides = {
 				mocha = {
