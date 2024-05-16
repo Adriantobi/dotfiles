@@ -10,18 +10,19 @@ opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.scrolloff = 4
 opt.expandtab = true
-opt.fillchars = { eob = ' ' }
+opt.fillchars = { eob = " " }
 
 opt.swapfile = false
 opt.incsearch = true
 opt.wrap = false
 opt.smartindent = true
 opt.cmdheight = 0
-opt.wildoptions = 'pum'
+opt.wildoptions = "pum"
 opt.autoindent = true
 opt.termguicolors = true
 opt.laststatus = 3
 opt.undofile = true
+opt.updatetime = 50
 
 opt.ignorecase = true
 opt.smartcase = true
@@ -31,5 +32,5 @@ opt.background = "dark"
 opt.clipboard:append("unnamedplus")
 
 -- Set completeopt to have a better completion experience
-opt.completeopt = 'menuone,noselect'
-opt.signcolumn = 'yes'
+opt.completeopt = "menuone,noselect"
+opt.signcolumn = "yes"

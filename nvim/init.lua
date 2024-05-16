@@ -1,2 +1,2 @@
-require("user.core")
-require("user.lazy")
+require("adriantd.core")
+require("adriantd.lazy")
