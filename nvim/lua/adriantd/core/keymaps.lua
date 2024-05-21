@@ -49,3 +49,20 @@ keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnosti
 -- Indentation Keymaps
 keymap.set("v", "<", "<gv", { desc = "Indent line left" })
 keymap.set("v", ">", ">gv", { desc = "Indent line left" })
+
+-- Terminal Keymaps
+keymap.set("n", "<leader>tj", function()
+	vim.cmd.new()
+	vim.cmd.wincmd("J")
+	vim.api.nvim_win_set_height(0, 14)
+	vim.wo.winfixheight = true
+	vim.cmd.term()
+end, { desc = "Open terminal below" })
+
+keymap.set("n", "<leader>tk", function()
+	vim.cmd.new()
+	vim.cmd.wincmd("K")
+	vim.api.nvim_win_set_height(0, 14)
+	vim.wo.winfixheight = true
+	vim.cmd.term()
+end, { desc = "Open terminal above" })

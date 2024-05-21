@@ -34,3 +34,16 @@ opt.clipboard:append("unnamedplus")
 -- Set completeopt to have a better completion experience
 opt.completeopt = "menuone,noselect"
 opt.signcolumn = "yes"
+
+-- [[Terminal Options]]
+local set = vim.opt_local
+
+-- Setting local options for terminal buffers
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = vim.api.nvim_create_augroup("custom_term_open", {}),
+	callback = function()
+		set.number = true
+		set.relativenumber = false
+		set.scrolloff = 0
+	end,
+})
