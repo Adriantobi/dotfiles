@@ -13,6 +13,6 @@ return {
 		})
 
 		local keymap = vim.keymap
-		keymap.set("n", "<leader>o", ":UndotreeHide<CR>:Outline<CR>", { desc = "Toggle Outline" })
+		keymap.set("n", "<leader>o", ":UndotreeHide<CR>:DBUIClose<CR>:Outline<CR>", { desc = "Toggle Outline" })
 	end,
 }
