@@ -7,7 +7,12 @@ return {
 	config = function()
 		local keymap = vim.keymap
 
-		keymap.set("n", "<leader>dd", "<cmd>DBUIToggle<cr>", { noremap = true, silent = true, desc = "Toggle dadbod" })
+		keymap.set(
+			"n",
+			"<leader>dd",
+			":UndotreeHide<CR>:OutlineClose<CR>:DBUIToggle<cr>",
+			{ noremap = true, silent = true, desc = "Toggle dadbod" }
+		)
 		keymap.set(
 			"n",
 			"<leader>da",
