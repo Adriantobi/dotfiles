@@ -9,7 +9,7 @@ return {
 
 		keymap.set(
 			"n",
-			"<leader>dd",
+			"<leader>db",
 			":UndotreeHide<CR>:OutlineClose<CR>:DBUIToggle<cr>",
 			{ noremap = true, silent = true, desc = "Toggle dadbod" }
 		)
