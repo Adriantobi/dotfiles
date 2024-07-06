@@ -1,27 +1,31 @@
 return {
-	-- Hybrid Theme
-	"catppuccin/nvim", -- Other themes: 'vimoxide/vim-cinnabar', 'alexanderbluhm/black.nvim', 'HoNamDuong/hybrid.nvim', HoNamDuong/hybrid.nvim'AlexvZyl/nordic.nvim', 'felipeagc/fleet-theme-nvim'
+	-- Colorscheme
+	-- 'f-person/auto-dark-mode.nvim'
+	"2nthony/vitesse.nvim", --Other themes: 'catppuccin/nvim', 'projekt0n/github-nvim-theme', 'HoNamDuong/hybrid.nvim', 'vimoxide/vim-cinnabar', 'alexanderbluhm/black.nvim', 'Murtaza-Udaipurwala/gruvqueen', 'AlexvZyl/nordic.nvim', 'felipeagc/fleet-theme-nvim'
 	lazy = false,
+	-- name = "catppuccin",
 	priority = 1000,
-	name = "catppuccin",
+	dependencies = {
+		"tjdevries/colorbuddy.nvim",
+	},
 	config = function()
-		local theme = require("catppuccin")
+		local theme = require("vitesse")
 
-		theme.setup({
-			flavour = "mocha",
-			term_colors = true,
-			transparent_background = false,
-			no_italic = false,
-			no_bold = false,
-			color_overrides = {
-				mocha = {
-					base = "#000000",
-					mantle = "#000000",
-					crust = "#000000",
-				},
-			},
-		})
+		-- theme.setup({
+		-- 	flavour = "mocha",
+		-- 	term_colors = true,
+		-- 	transparent_background = false,
+		-- 	no_italic = false,
+		-- 	no_bold = false,
+		-- 	color_overrides = {
+		-- 		mocha = {
+		-- 			base = "#000000",
+		-- 			mantle = "#000000",
+		-- 			crust = "#000000",
+		-- 		},
+		-- 	},
+		-- })
 
-		vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("vitesse")
 	end,
 }
