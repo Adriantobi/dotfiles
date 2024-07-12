@@ -6,6 +6,7 @@ return {
 	config = function()
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
+		local fortune = require("alpha.fortune")
 		dashboard.section.header.val = {
 			[[                                                                                   ]],
 			[[     /\__\         /\  \         /\  \         /\__\          ___        /\__\     ]],
@@ -28,14 +29,14 @@ return {
 			dashboard.button("l", "  Marks", ":Telescope marks<CR>"),
 			dashboard.button("q", "󰩈  Quit Nvim", ":qa<CR>"),
 		}
-		local handle = io.popen("fortune")
-		local fortune = handle:read("*a")
-		handle:close()
-		dashboard.section.footer.val = fortune
+		dashboard.section.footer.val = fortune()
 
-		dashboard.config.opts.noautocmd = true
+		-- Send config to alpha
+		alpha.setup(dashboard.opts)
 
-		vim.cmd([[autocmd User AlphaReady echo 'ready']])
-		alpha.setup(dashboard.config)
+		-- Disable folding on alpha buffer
+		vim.cmd([[
+		      autocmd FileType alpha setlocal nofoldenable
+		]])
 	end,
 }
