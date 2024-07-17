@@ -63,7 +63,7 @@ return {
 		keymap.set("n", "zM", require("ufo").closeAllFolds)
 		keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
 		keymap.set("n", "zm", require("ufo").closeFoldsWith)
-		keymap.set("n", "K", function()
+		keymap.set("n", "zP", function()
 			local winid = require("ufo").peekFoldedLinesUnderCursor()
 			if not winid then
 				vim.lsp.buf.hover()
