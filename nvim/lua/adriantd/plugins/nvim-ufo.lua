@@ -4,7 +4,6 @@ return {
 
 	config = function()
 		local ufo = require("ufo")
-		local lspconfig = require("lspconfig")
 		local keymap = vim.keymap
 
 		local handler = function(virtText, lnum, endLnum, width, truncate)
