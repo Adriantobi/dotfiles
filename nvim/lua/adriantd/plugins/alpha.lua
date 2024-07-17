@@ -7,20 +7,9 @@ return {
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
 		local fortune = require("alpha.fortune")
-		dashboard.section.header.val = {
-			[[                                                                                   ]],
-			[[     /\__\         /\  \         /\  \         /\__\          ___        /\__\     ]],
-			[[    /::|  |       /::\  \       /::\  \       /:/  /         /\  \      /::|  |    ]],
-			[[   /:|:|  |      /:/\:\  \     /:/\:\  \     /:/  /          \:\  \    /:|:|  |    ]],
-			[[  /:/|:|  |__   /::\~\:\  \   /:/  \:\  \   /:/__/  ___      /::\__\  /:/|:|__|__  ]],
-			[[ /:/ |:| /\__\ /:/\:\ \:\__\ /:/__/ \:\__\  |:|  | /\__\  __/:/\/__/ /:/ |::::\__\ ]],
-			[[ \/__|:|/:/  / \:\~\:\ \/__/ \:\  \ /:/  /  |:|  |/:/  / /\/:/  /    \/__/~~/:/  / ]],
-			[[     |:/:/  /   \:\ \:\__\    \:\  /:/  /   |:|__/:/  /  \::/__/           /:/  /  ]],
-			[[     |::/  /     \:\ \/__/     \:\/:/  /     \::::/__/    \:\__\          /:/  /   ]],
-			[[     /:/  /       \:\__\        \::/  /       ~~~~         \/__/         /:/  /    ]],
-			[[     \/__/         \/__/         \/__/                                   \/__/     ]],
-			[[                                                                                   ]],
-		}
+		local header = require("headers").get_header()
+
+		dashboard.section.header.val = header
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  New File", ":ene <BAR> startinsert <CR>"),
 			dashboard.button("f", "󰈞  Find file", ":Telescope find_files<CR>"),
