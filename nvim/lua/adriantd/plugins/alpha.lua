@@ -7,7 +7,7 @@ return {
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
 		local fortune = require("alpha.fortune")
-		local header = require("headers").get_header()
+		local header = require("headers")
 
 		dashboard.section.header.val = header
 		dashboard.section.buttons.val = {
