@@ -206,9 +206,4 @@ M.headers = {
 	},
 }
 
-M.get_header = function()
-	local header = M.headers[math.random(#M.headers)]
-	return header
-end
-
-return M
+return M.headers[math.random(#M.headers)]
