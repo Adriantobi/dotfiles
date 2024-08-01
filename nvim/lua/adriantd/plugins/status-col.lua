@@ -17,10 +17,4 @@ return {
 			},
 		}
 	end,
-	config = function()
-		local statuscol = require("statuscol")
-		statuscol.setup({
-			ft_ignore = { "dbout" },
-		})
-	end,
 }
