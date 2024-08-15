@@ -65,7 +65,7 @@ return {
 						}
 					end),
 					{
-						line.sep("", theme.tail, theme.fill),
+						line.sep("", theme.fill, theme.fill),
 					},
 					hl = theme.fill,
 				}
