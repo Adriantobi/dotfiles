@@ -20,10 +20,8 @@ return {
 				return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), ":e")
 			end,
 			output = function()
-				return vim.fn.expand("$HOME")
-					.. "\\Pictures\\Screenshots\\"
-					.. os.date("!%Y-%m-%dT%H-%M-%SZ")
-					.. "_code.png"
+				local custom_path = vim.fn.expand("$HOME/Pictures/Screenshots/")
+				return custom_path .. os.date("!%Y-%m-%dT%H-%M-%SZ") .. "_code.png"
 			end,
 			to_clipboard = true,
 		})
