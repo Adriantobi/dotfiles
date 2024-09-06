@@ -30,7 +30,7 @@ return {
       -- list of servers for mason to install
       automatic_installation = true,
       ensure_installed = {
-        "tsserver",
+        "ts_ls",
         "html",
         "cssls",
         "tailwindcss",
