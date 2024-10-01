@@ -1,21 +1,21 @@
 return {
-  -- LSP Configuration & Plugins
-  'williamboman/mason.nvim',
-  dependencies = {
-    -- Automatically install LSPs to stdpath for neovim
-    'williamboman/mason-lspconfig.nvim',
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
+	-- LSP Configuration & Plugins
+	"williamboman/mason.nvim",
+	dependencies = {
+		-- Automatically install LSPs to stdpath for neovim
+		"williamboman/mason-lspconfig.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
-    -- Useful status updates for LSP
-    -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-  },
-  config = function()
-    local mason = require("mason")
-    local mason_lspconfig = require("mason-lspconfig")
-    local mason_tool_installer = require("mason-tool-installer")
+		-- Useful status updates for LSP
+		-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+		{ "j-hui/fidget.nvim", tag = "legacy", opts = {} },
+	},
+	config = function()
+		local mason = require("mason")
+		local mason_lspconfig = require("mason-lspconfig")
+		local mason_tool_installer = require("mason-tool-installer")
 
-    mason.setup({
+		mason.setup({
 			automatic_installation = true,
 			ui = {
 				icons = {
@@ -24,34 +24,39 @@ return {
 					server_uninstalled = "✗",
 				},
 			},
+			registries = {
+				"github:nvim-java/mason-registry",
+				"github:mason-org/mason-registry",
+			},
 		})
 
-    mason_lspconfig.setup({
-      -- list of servers for mason to install
-      automatic_installation = true,
-      ensure_installed = {
-        "ts_ls",
-        "html",
-        "cssls",
-        "tailwindcss",
-        "svelte",
-        "lua_ls",
-        "graphql",
-        "emmet_ls",
-        "prismals",
-        "pyright",
-      },
-    })
+		mason_lspconfig.setup({
+			-- list of servers for mason to install
+			automatic_installation = true,
+			ensure_installed = {
+				"ts_ls",
+				"html",
+				"cssls",
+				"tailwindcss",
+				"svelte",
+				"lua_ls",
+				"graphql",
+				"emmet_ls",
+				"prismals",
+				"pyright",
+				"jdtls",
+			},
+		})
 
-    mason_tool_installer.setup({
-      ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua", -- lua formatter
-        "isort", -- python formatter
-        "black", -- python formatter
-        "pylint",
-        "eslint_d",
-      },
-    })
-  end,
+		mason_tool_installer.setup({
+			ensure_installed = {
+				"prettier", -- prettier formatter
+				"stylua", -- lua formatter
+				"isort", -- python formatter
+				"black", -- python formatter
+				"pylint",
+				"eslint_d",
+			},
+		})
+	end,
 }
