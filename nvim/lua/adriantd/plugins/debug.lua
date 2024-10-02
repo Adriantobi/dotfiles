@@ -14,9 +14,6 @@ return {
 		mason_nvim_dap.setup({
 			automatic_installation = true,
 			handlers = {},
-			ensure_installed = {
-				"delve",
-			},
 		})
 
 		local keymap = vim.keymap

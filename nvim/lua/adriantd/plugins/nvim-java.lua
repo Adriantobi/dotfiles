@@ -1,7 +1,6 @@
 return {
 	"nvim-java/nvim-java",
-	lazy = true,
-	ft = "java",
+	event = { "BufEnter *.java" },
 	config = function()
 		local nvim_java = require("java")
 
