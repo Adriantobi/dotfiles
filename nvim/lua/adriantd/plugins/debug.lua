@@ -30,17 +30,31 @@ return {
 
 		dapui.setup({
 			icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
+			mappings = {}, -- Add appropriate mappings here
+			element_mappings = {}, -- Add appropriate element mappings here
+			expand_lines = true,
+			force_buffers = true,
+			layouts = {}, -- Add appropriate layouts here
+			floating = {
+				border = "single", -- or 'double'
+				mappings = {}, -- Add appropriate mappings here
+			}, -- Add appropriate floating configuration here
+			render = {
+				indent = 2,
+			}, -- Add appropriate render configuration here
 			controls = {
+				enabled = true,
+				element = "repl",
 				icons = {
-					pause = "⏸",
-					play = "▶",
-					step_into = "⏎",
-					step_over = "⏭",
-					step_out = "⏮",
-					step_back = "b",
+					pause = "",
+					play = "",
+					step_into = "",
+					step_over = "󰆷",
+					step_out = "",
+					step_back = "",
 					run_last = "▶▶",
-					terminate = "⏹",
-					disconnect = "⏏",
+					terminate = "",
+					disconnect = "",
 				},
 			},
 		})
