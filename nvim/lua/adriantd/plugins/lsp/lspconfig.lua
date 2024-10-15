@@ -5,6 +5,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
+		"nvim-java/nvim-java",
 	},
 	config = function()
 		-- import lspconfig plugin
@@ -152,6 +153,10 @@ return {
 						},
 					},
 				})
+			end,
+			["jdtls"] = function()
+				local nvim_java = require("java")
+				nvim_java.setup()
 			end,
 		})
 	end,
