@@ -8,6 +8,9 @@ return {
 		"nvim-java/nvim-java",
 	},
 	config = function()
+		-- import nvim-java plugin
+		local nvim_java = require("java")
+
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
 
@@ -155,7 +158,6 @@ return {
 				})
 			end,
 			["jdtls"] = function()
-				local nvim_java = require("java")
 				nvim_java.setup()
 			end,
 		})
