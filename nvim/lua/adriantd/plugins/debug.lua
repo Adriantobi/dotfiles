@@ -10,11 +10,18 @@ return {
 		local dap = require("dap")
 		local dapui = require("dapui")
 		local mason_nvim_dap = require("mason-nvim-dap")
+		local dap_config = require("dap-config")
 
 		mason_nvim_dap.setup({
 			automatic_installation = true,
-			handlers = {},
+			handlers = {
+				function(config)
+					mason_nvim_dap.default_setup(config)
+				end,
+			},
 		})
+
+		dap_config.setup(dap)
 
 		local keymap = vim.keymap
 		local highlight = vim.api.nvim_set_hl
@@ -52,7 +59,7 @@ return {
 					step_over = "󰆷",
 					step_out = "",
 					step_back = "",
-					run_last = "▶▶",
+					run_last = "",
 					terminate = "",
 					disconnect = "",
 				},
@@ -61,9 +68,22 @@ return {
 
 		keymap.set("n", "<F7>", dapui.toggle, { desc = "Debug: See last session result." })
 
-		dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-		dap.listeners.before.event_exited["dapui_config"] = dapui.close
+		-- dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+		-- dap.listeners.before.event_terminated["dapui_config"] = dapui.close
+		-- dap.listeners.before.event_exited["dapui_config"] = dapui.close
+
+		dap.listeners.before.attach.dapui_config = function()
+			dapui.open()
+		end
+		dap.listeners.before.launch.dapui_config = function()
+			dapui.open()
+		end
+		dap.listeners.before.event_terminated.dapui_config = function()
+			dapui.close()
+		end
+		dap.listeners.before.event_exited.dapui_config = function()
+			dapui.close()
+		end
 
 		highlight(0, "DapBreakpoint", { ctermbg = 0, fg = "#993939", bg = "#31353f" })
 		highlight(0, "DapLogPoint", { ctermbg = 0, fg = "#61afef", bg = "#31353f" })
