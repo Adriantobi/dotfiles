@@ -45,6 +45,9 @@ return {
 				"prismals",
 				"pyright",
 				"jdtls",
+				"angularls",
+				"csharp_ls",
+				"omnisharp",
 			},
 		})
 
