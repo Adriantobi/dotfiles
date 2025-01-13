@@ -1,31 +1,32 @@
 return {
 	-- Colorscheme
-	-- 'f-person/auto-dark-mode.nvim'
-	"catppuccin/nvim", --Other themes: 'sar/extra-darkplus.nvim', '2nthony/vitesse.nvim', 'projekt0n/github-nvim-theme', 'HoNamDuong/hybrid.nvim', 'vimoxide/vim-cinnabar', 'alexanderbluhm/black.nvim', 'Murtaza-Udaipurwala/gruvqueen', 'AlexvZyl/nordic.nvim', 'felipeagc/fleet-theme-nvim'
+	"slugbyte/lackluster.nvim",
 	lazy = false,
-	name = "catppuccin",
 	priority = 1000,
-	-- dependencies = {
-	-- 	"tjdevries/colorbuddy.nvim",
-	-- },
 	config = function()
-		local theme = require("catppuccin")
+		local theme = require("lackluster")
+		local color = theme.color
+		local devicons = require("nvim-web-devicons")
 
 		theme.setup({
-			flavour = "mocha",
-			term_colors = true,
-			transparent_background = false,
-			no_italic = false,
-			no_bold = false,
-			color_overrides = {
-				mocha = {
-					base = "#000000",
-					mantle = "#000000",
-					crust = "#000000",
+			tweak_background = {
+				normal = color.black,
+				telescope = color.black,
+				menu = color.black,
+				popup = color.black,
+			},
+		})
+
+		devicons.setup({
+			color_icons = false,
+			override = {
+				["default_icon"] = {
+					color = theme.gray4,
+					name = "Default",
 				},
 			},
 		})
 
-		vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("lackluster-night")
 	end,
 }
