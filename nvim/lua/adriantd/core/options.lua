@@ -31,6 +31,8 @@ opt.background = "dark"
 
 opt.clipboard:append("unnamedplus")
 
+opt.mousescroll = "ver:0,hor:0"
+
 -- Set completeopt to have a better completion experience
 opt.completeopt = "menuone,noselect"
 opt.signcolumn = "yes"

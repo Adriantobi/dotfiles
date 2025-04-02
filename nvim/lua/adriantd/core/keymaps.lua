@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local keymap = vim.keymap
+local terminals = require("terminals")
 
 keymap.set("n", "J", ":m .+1<CR>==")
 keymap.set("n", "K", ":m .-2<CR>==")
@@ -53,17 +54,15 @@ keymap.set("v", ">", ">gv", { desc = "Indent line left" })
 
 -- Terminal Keymaps
 keymap.set("n", "<leader>tj", function()
-	vim.cmd.new()
-	vim.cmd.wincmd("J")
-	vim.api.nvim_win_set_height(0, 14)
-	vim.wo.winfixheight = true
-	vim.cmd.term()
-end, { desc = "Open terminal below" })
+	terminals.toggle_terminal("below")
+end, { desc = "Toggle terminal below" })
 
 keymap.set("n", "<leader>tk", function()
-	vim.cmd.new()
-	vim.cmd.wincmd("K")
-	vim.api.nvim_win_set_height(0, 14)
-	vim.wo.winfixheight = true
-	vim.cmd.term()
-end, { desc = "Open terminal above" })
+	terminals.toggle_terminal("above")
+end, { desc = "Toggle terminal above" })
+
+-- Disable arrow keys
+keymap.set("", "<up>", "<nop>", { noremap = true })
+keymap.set("", "<down>", "<nop>", { noremap = true })
+keymap.set("i", "<up>", "<nop>", { noremap = true })
+keymap.set("i", "<down>", "<nop>", { noremap = true })
