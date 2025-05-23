@@ -5,11 +5,15 @@ return {
 	config = function()
 		local lualine = require("lualine")
 		local lazy_status = require("lazy.status")
+		local color = require("lackluster").color
 
 		lualine.setup({
 			options = {
 				icons_enabled = false,
-				theme = "lackluster",
+				theme = vim.tbl_deep_extend("force", require("lualine.themes.lackluster"), {
+					normal = { c = { bg = color.black } },
+					inactive = { c = { bg = color.black } },
+				}),
 				component_separators = "|",
 				section_separators = "",
 			},
