@@ -18,7 +18,10 @@ return {
 				section_separators = { left = "", right = "" },
 			},
 			sections = {
-				lualine_b = { require("macro_recording").show_macro_recording },
+				lualine_b = {
+					{ "branch", icons_enabled = true, icon = "" },
+					{ require("macro_recording").show_macro_recording },
+				},
 				lualine_x = {
 					{
 						lazy_status.updates,
@@ -27,7 +30,7 @@ return {
 					},
 					{ "encoding" },
 					{ "fileformat" },
-					{ "filetype" },
+					{ "filetype", icons_enabled = true },
 				},
 			},
 		})
