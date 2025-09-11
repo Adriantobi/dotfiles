@@ -14,8 +14,8 @@ return {
 					normal = { c = { bg = color.black } },
 					inactive = { c = { bg = color.black } },
 				}),
-				component_separators = "|",
-				section_separators = "",
+				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
 			},
 			sections = {
 				lualine_b = { require("macro_recording").show_macro_recording },

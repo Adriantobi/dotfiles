@@ -10,7 +10,6 @@ return {
 	},
 	config = function()
 		local silicon = require("nvim-silicon")
-		local keymap = vim.keymap
 
 		silicon.setup({
 			window_title = function()
@@ -25,7 +24,34 @@ return {
 			end,
 			to_clipboard = true,
 		})
-
-		keymap.set("v", "<S-s>", "<cmd>'<,'>Silicon<CR>", { noremap = true, silent = true, desc = "Take screenshot" })
 	end,
+	keys = {
+		{
+			"<leader>ss",
+			function()
+				local silicon = require("nvim-silicon")
+				silicon.shoot()
+			end,
+			mode = "v",
+			desc = "Take screenshot",
+		},
+		{
+			"<leader>sf",
+			function()
+				local silicon = require("nvim-silicon")
+				silicon.file()
+			end,
+			mode = "v",
+			desc = "Save code screenshot as file",
+		},
+		{
+			"<leader>sc",
+			function()
+				local silicon = require("nvim-silicon")
+				silicon.clip()
+			end,
+			mode = "v",
+			desc = "Copy code screenshot to clipboard",
+		},
+	},
 }
