@@ -26,8 +26,8 @@ return {
 				path_display = { "smart" },
 				mappings = {
 					i = {
-						["<C-u>"] = false,
-						["<C-d>"] = false,
+						["<C-u>"] = actions.preview_scrolling_up,
+						["<C-d>"] = actions.preview_scrolling_down,
 						["<C-k>"] = actions.move_selection_previous,
 						["<C-j>"] = actions.move_selection_next,
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
