@@ -23,6 +23,34 @@ return {
 
 		local lspkind = require("lspkind")
 
+		local kind_icons = {
+			Text = "󰉿",
+			Method = "m",
+			Function = "󰊕",
+			Constructor = "",
+			Field = "",
+			Variable = "󰆧",
+			Class = "󰌗",
+			Interface = "",
+			Module = "",
+			Property = "",
+			Unit = "",
+			Value = "󰎠",
+			Enum = "",
+			Keyword = "󰌋",
+			Snippet = "",
+			Color = "󰏘",
+			File = "󰈙",
+			Reference = "",
+			Folder = "󰉋",
+			EnumMember = "",
+			Constant = "󰇽",
+			Struct = "",
+			Event = "",
+			Operator = "󰆕",
+			TypeParameter = "󰊄",
+		}
+
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 		require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -57,11 +85,23 @@ return {
 
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {
-				format = lspkind.cmp_format({
-					before = require("tailwind-tools.cmp").lspkind_format,
-					maxwidth = 50,
-					ellipsis_char = "...",
-				}),
+				fields = { "kind", "abbr", "menu" },
+				format = function(entry, vim_item)
+					-- Apply Tailwind Tools formatting first (modifies vim_item)
+					vim_item = require("tailwind-tools.cmp").lspkind_format(entry, vim_item)
+
+					vim_item.kind = string.format("%s", kind_icons[vim_item.kind] or vim_item.kind)
+
+					-- Set source label
+					vim_item.menu = ({
+						nvim_lsp = "[LSP]",
+						luasnip = "[Snippet]",
+						buffer = "[Buffer]",
+						path = "[Path]",
+					})[entry.source.name]
+
+					return vim_item
+				end,
 			},
 		})
 
