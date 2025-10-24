@@ -29,13 +29,13 @@ return {
 
 		local keymap = vim.keymap
 
-		keymap.set("n", "<leader>a", function()
+		keymap.set("n", "<leader>ha", function()
 			harpoon:list():add()
 		end, { desc = "Add current file to Harpoon list" })
-		keymap.set("n", "<leader>rf", function()
+		keymap.set("n", "<leader>hr", function()
 			harpoon:list():remove()
 		end, { desc = "Remove current file from Harpoon list" })
-		keymap.set("n", "<leader>oh", function()
+		keymap.set("n", "<leader>ho", function()
 			toggle_telescope(harpoon:list())
 		end, { desc = "Open harpoon window" })
 
