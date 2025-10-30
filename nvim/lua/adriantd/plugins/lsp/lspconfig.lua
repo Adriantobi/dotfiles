@@ -11,9 +11,6 @@ return {
 		-- import nvim-java plugin
 		local nvim_java = require("java")
 
-		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
-
 		-- import mason_lspconfig plugin
 		local mason_lspconfig = require("mason-lspconfig")
 
@@ -97,35 +94,39 @@ return {
 			-- default handler for installed servers
 			handlers = {
 				function(server_name)
-					lspconfig[server_name].setup({
+					-- Use vim.lsp.config instead of lspconfig[server_name].setup
+					vim.lsp.config(server_name, {
 						capabilities = capabilities,
 					})
+					vim.lsp.enable({ server_name })
 				end,
 				["svelte"] = function()
-					-- configure svelte server
-					lspconfig["svelte"].setup({
+					-- Configure svelte server
+					vim.lsp.config("svelte", {
 						capabilities = capabilities,
 						on_attach = function(client, bufnr)
 							vim.api.nvim_create_autocmd("BufWritePost", {
 								pattern = { "*.js", "*.ts" },
 								callback = function(ctx)
-									-- Here use ctx.match instead of ctx.file
+									-- Use ctx.match instead of ctx.file
 									client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
 								end,
 							})
 						end,
 					})
+					vim.lsp.enable({ "svelte" })
 				end,
 				["graphql"] = function()
-					-- configure graphql language server
-					lspconfig["graphql"].setup({
+					-- Configure GraphQL language server
+					vim.lsp.config("graphql", {
 						capabilities = capabilities,
 						filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
 					})
+					vim.lsp.enable({ "graphql" })
 				end,
 				["emmet_ls"] = function()
-					-- configure emmet language server
-					lspconfig["emmet_ls"].setup({
+					-- Configure Emmet language server
+					vim.lsp.config("emmet_ls", {
 						capabilities = capabilities,
 						filetypes = {
 							"html",
@@ -138,10 +139,11 @@ return {
 							"svelte",
 						},
 					})
+					vim.lsp.enable({ "emmet_ls" })
 				end,
 				["lua_ls"] = function()
-					-- configure lua server (with special settings)
-					lspconfig["lua_ls"].setup({
+					-- Configure Lua server (with special settings)
+					vim.lsp.config("lua_ls", {
 						capabilities = capabilities,
 						settings = {
 							Lua = {
@@ -155,12 +157,17 @@ return {
 							},
 						},
 					})
+					vim.lsp.enable({ "lua_ls" })
 				end,
 				["jdtls"] = function()
+					-- Call nvim_java setup (assuming it's already defined)
 					nvim_java.setup()
-					lspconfig["jdtls"].setup({
+
+					-- Configure jdtls server
+					vim.lsp.config("jdtls", {
 						capabilities = capabilities,
 					})
+					vim.lsp.enable({ "jdtls" })
 				end,
 			},
 		})
