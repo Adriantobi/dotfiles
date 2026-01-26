@@ -14,4 +14,5 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{ import = "adriantd.plugins" },
 	{ import = "adriantd.plugins.lsp" },
+	{ import = "adriantd.plugins.highlighting" },
 })

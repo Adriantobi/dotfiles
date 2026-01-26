@@ -21,8 +21,10 @@ return {
 
 		local keymap = vim.keymap -- for conciseness
 
+		local usr_lsp_augroup = vim.api.nvim_create_augroup("user_lsp_config", {})
+
 		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+			group = usr_lsp_augroup,
 			callback = function(ev)
 				-- Buffer local mappings.
 				-- See `:help vim.lsp.*` for documentation on any of the below functions

@@ -39,10 +39,11 @@ opt.signcolumn = "yes"
 
 -- [[Terminal Options]]
 local set = vim.opt_local
+local term_toggle_augroup = vim.api.nvim_create_augroup("custom_term_open", {})
 
 -- Setting local options for terminal buffers
 vim.api.nvim_create_autocmd("TermOpen", {
-	group = vim.api.nvim_create_augroup("custom_term_open", {}),
+	group = term_toggle_augroup,
 	callback = function()
 		set.number = false
 		set.relativenumber = false
