@@ -57,6 +57,8 @@ return {
 				"isort", -- python formatter
 				"black", -- python formatter
 				"pylint",
+				"java-debug-adapter",
+				"java-test",
 				"eslint_d",
 			},
 		})
