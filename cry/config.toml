@@ -1,0 +1,92 @@
+shell = "cmd"
+
+[extensions]
+dart = "dart run"
+js = "node"
+rs = "cargo run"
+py = "python"
+
+[commands.test]
+run = "echo ${b}"
+args = []
+
+[commands.test.vars]
+a = "${'name'}"
+b = "${a}"
+
+[commands.history]
+run = "notepad C:/Users/talkt/AppData/Roaming/Microsoft/Windows/PowerShell/PSReadLine/ConsoleHost_history.txt"
+args = []
+
+[commands.history.vars]
+
+[commands.gitv]
+run = "echo ${version}"
+args = []
+
+[commands.gitv.vars]
+version = "${cmd(git rev-parse --short HEAD)}"
+
+[commands.next-dev]
+run = "npm run dev"
+
+[commands.os]
+run = "echo ${os}"
+
+[commands.os.vars]
+os = "${cry.os}"
+
+[commands.react]
+run = "npm create react-app ${project}"
+args = [
+  {
+    arg_type = "string",
+    name = "name?",
+    description = "The name of the React app"
+  }
+]
+
+[commands.react.vars]
+project = "${name ?? cry.cwd.basename}"
+
+[commands.serve]
+run = "npx serve"
+
+[commands.serve.vars]
+
+[commands.start]
+run = "${is_windows ? 'npm.cmd start' : 'npm start'}"
+args = []
+
+[commands.start.vars]
+is_windows = "${cry.os == 'windows'}"
+
+[commands.build]
+run = "pnpm build ${flags} | tee ${target}/build.log && echo Build complete"
+args = [
+    {
+      arg_type = "string",
+      name = "target?",
+      description = "The target directory for the build output"
+    },
+    {
+      arg_type = "string",
+      name = "test",
+      description = "A test argument to demonstrate string interpolation"
+    },
+    {
+      arg_type = "boolean",
+      name = "minify",
+      description = "Flag to enable minification of the build"
+    },
+]
+
+[commands.build.vars]
+target = "${target ?? 'dist'}"
+flags = "${minify ?? '--minify'}"
+
+[commands.info]
+run = "echo Project: ${cry.cwd.basename} && echo OS: ${cry.os} && echo CRY_SHELL: ${cry.shell}"
+args = []
+
+[commands.info.vars]
