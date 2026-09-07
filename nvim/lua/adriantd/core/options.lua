@@ -1,6 +1,8 @@
 vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt
+local api = vim.api
+local autocmd = api.nvim_create_autocmd
 
 opt.relativenumber = true
 opt.number = true
@@ -39,14 +41,28 @@ opt.signcolumn = "yes"
 
 -- [[Terminal Options]]
 local set = vim.opt_local
-local term_toggle_augroup = vim.api.nvim_create_augroup("custom_term_open", {})
+local term_toggle_augroup = api.nvim_create_augroup("custom_term_open", {})
 
 -- Setting local options for terminal buffers
-vim.api.nvim_create_autocmd("TermOpen", {
+autocmd("TermOpen", {
 	group = term_toggle_augroup,
 	callback = function()
 		set.number = false
 		set.relativenumber = false
 		set.scrolloff = 0
+	end,
+})
+
+-- Jump to last position when re-opening buffer
+
+autocmd("BufReadPost", {
+	desc = "Jump to last pos when opening a file",
+	callback = function(args)
+		local valid_line = vim.fn.line([['"]]) >= 1 and vim.fn.line([['"]]) < vim.fn.line("$")
+		local not_commit = vim.b[args.buff].filetype ~= "commit"
+
+		if valid_line and not_commit then
+			vim.cmd([[normal! g`"]])
+		end
 	end,
 })
