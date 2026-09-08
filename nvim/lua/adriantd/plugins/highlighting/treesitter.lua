@@ -2,8 +2,8 @@ return {
 	-- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
 	event = { "BufReadPre", "BufNewFile" },
+	lazy = false,
 	build = ":TSUpdate",
-	branch = "main",
 	config = function()
 		require("nvim-treesitter.install").compilers = { "clang" }
 		local treesitter = require("nvim-treesitter")
@@ -31,9 +31,7 @@ return {
 		}
 
 		-- Install above parsers if they are missing.
-		vim.defer_fn(function()
-			treesitter.install(parsers)
-		end, 1000)
+		treesitter.install(parsers):wait(300000)
 
 		local treesitter_augroup = vim.api.nvim_create_augroup("enable_treesitter_features", {})
 
@@ -48,13 +46,11 @@ return {
 					return
 				end
 
-				-- syntax highlighting, provided by Neovim
 				vim.treesitter.start(buf, lang)
-				-- folds, provided by Neovim
-				vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-				vim.wo.foldmethod = "expr"
-				-- indentation, provided by nvim-treesitter
-				vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+				vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+				vim.wo[0][0].foldmethod = "expr"
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 			end,
 		})
 	end,
